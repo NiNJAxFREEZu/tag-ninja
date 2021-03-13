@@ -9,7 +9,7 @@ To keep `.flac` file small, `tag-ninja` only tags the most important information
 - Album title
 - Artist
 - Track number
-- Total track count in an album
+- Total track count in the album
 - Album cover (soon™)
 
 ## Before you use
