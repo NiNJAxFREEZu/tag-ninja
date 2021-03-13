@@ -25,6 +25,6 @@ $ ./tag-ninja track01.flac
 ## Dependencies
 - curl (HTTP requests)
 - flac (`.flac` file support and tagging utility)
-- jq (json processing)
+- jq (`json` file processing)
 
 All dependencies are available in most major distros repositories.
