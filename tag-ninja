@@ -42,7 +42,7 @@ then
 	exit 1
 fi
 
-# Creating path a temporary file
+# Creating temporary files for storing data
 AUDIO_SPLICE_FLAC=$(mktemp /tmp/tag-ninja-XXXXXXXX.flac)
 RECOGNIZED_JSON=$(mktemp /tmp/tag-ninja-XXXXXXXX.json)
 FLAC_TAG=$(mktemp /tmp/tag-ninja-XXXXXXXX.tag)
