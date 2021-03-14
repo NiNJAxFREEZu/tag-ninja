@@ -47,7 +47,6 @@ AUDIO_SPLICE_FLAC=$(mktemp /tmp/tag-ninja-XXXXXXXX.flac)
 RECOGNIZED_JSON=$(mktemp /tmp/tag-ninja-XXXXXXXX.json)
 FLAC_TAG=$(mktemp /tmp/tag-ninja-XXXXXXXX.tag)
 
-
 # Splicing audio file
 ffmpeg -hide_banner -loglevel panic -y -ss 0 -i $1 -t $SPLICE_DURATION -c copy $AUDIO_SPLICE_FLAC
 
