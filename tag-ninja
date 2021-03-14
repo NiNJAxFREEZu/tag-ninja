@@ -62,9 +62,9 @@ TAG_TRACK_NUMBER=$(jq ".result.spotify.track_number" $RECOGNIZED_JSON)
 TAG_TOTAL_TRACKS=$(jq ".result.spotify.album.track_number" $RECOGNIZED_JSON)
 
 # Building flac tag
-echo "TRACKTOTAL=$TAG_TOTAL_TRACKS" >> $FLAC_TAG
+echo "TRACKTOTAL=$TAG_TOTAL_TRACKS" > $FLAC_TAG
 echo "TRACKNUMBER=$TAG_TRACK_NUMBER" >> $FLAC_TAG
-echo "TITLE=$TAG_SONGTITLE" > $FLAC_TAG
+echo "TITLE=$TAG_SONGTITLE" >> $FLAC_TAG
 echo "ARTIST=$TAG_ARTIST" >> $FLAC_TAG
 echo "ALBUM=$TAG_ALBUM" >> $FLAC_TAG
 echo "DATE=$TAG_RELEASEDATE" >> $FLAC_TAG
