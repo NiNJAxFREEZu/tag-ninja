@@ -42,7 +42,7 @@ then
 	exit 1
 fi
 
-if [ ! -f "$API_TOKEN_FILE" ]
+if [ ! -f "$API_TOKEN_FILE" ] || [ ! -s "$API_TOKEN_FILE" ]
 then
 	echo -e "Before you use tag-ninja, you have to get AudD API token\nGo to audd.io, generate the token and paste it into $(pwd)/$API_TOKEN_FILE."
     	exit 1

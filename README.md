@@ -13,7 +13,7 @@ To keep `.flac` file small, `tag-ninja` only tags the most important information
 
 ## Before you use
 Create an account at [AudD](https://audd.io) and generate an API token. This token will be necessary to make song recognition requests.
-Then, place the token in a text file in `tag-ninja\api_token`.  
+Then, place the token in a text file `tag-ninja\api_token`.  
 
 By default `rip-ninja` looks for a token file named `api_token` in it's own directory. You can always change it by editing the source code, which i strongly recommend.
 
