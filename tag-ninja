@@ -38,8 +38,14 @@ fi
 # Checking if given file exists 
 if [ ! -f $1 ]
 then
-	echo "File does not exist."
+	echo "Song file does not exist."
 	exit 1
+fi
+
+if [ ! -f "$API_TOKEN_FILE" ]
+then
+	echo -e "Before you use tag-ninja, you have to get AudD API token\nGo to audd.io, generate the token and paste it into $(pwd)/$API_TOKEN_FILE."
+    	exit 1
 fi
 
 # Creating temporary files for storing data
@@ -59,15 +65,9 @@ TAG_ALBUM=$(jq ".result.album" $RECOGNIZED_JSON)
 TAG_SONGTITLE=$(jq ".result.title" $RECOGNIZED_JSON)
 TAG_RELEASEDATE=$(jq ".result.release_date" $RECOGNIZED_JSON)
 TAG_TRACK_NUMBER=$(jq ".result.spotify.track_number" $RECOGNIZED_JSON)
-TAG_TOTAL_TRACKS=$(jq ".result.spotify.album.track_number" $RECOGNIZED_JSON)
 
 # Building flac tag
-echo "TRACKTOTAL=$TAG_TOTAL_TRACKS" > $FLAC_TAG
-echo "TRACKNUMBER=$TAG_TRACK_NUMBER" >> $FLAC_TAG
-echo "TITLE=$TAG_SONGTITLE" >> $FLAC_TAG
-echo "ARTIST=$TAG_ARTIST" >> $FLAC_TAG
-echo "ALBUM=$TAG_ALBUM" >> $FLAC_TAG
-echo "DATE=$TAG_RELEASEDATE" >> $FLAC_TAG
+echo -e "TRACKNUMBER=$TAG_TRACK_NUMBER\nTITLE=$TAG_SONGTITLE\nARTIST=$TAG_ARTIST\nALBUM=$TAG_ALBUM\nDATE=$TAG_RELEASEDATE" > $FLAC_TAG
 
 # Removing quotations
 sed -i 's/\"//g' $FLAC_TAG
