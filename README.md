@@ -4,7 +4,7 @@ Automatic FLAC audio recognition and tagging using AudD API.
 ## How it works
 Takes a splice of the given `.flac` audio track, sends it to AudD audio recognition API and tags it based off information provided in the response `json` file.
 
-To keep `.flac` file small, `tag-ninja` only tags the most important information about the track - all of them are listed below:
+`tag-ninja` tags the most important information about the track - all of them are listed below:
 - Track title
 - Album title
 - Artist
