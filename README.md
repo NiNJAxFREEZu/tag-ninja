@@ -15,7 +15,7 @@ Takes a splice of the given `.flac` audio track, sends it to AudD audio recognit
 Create an account at [AudD](https://audd.io) and generate an API token. This token will be necessary to make song recognition requests.
 Then, place the token in a text file `tag-ninja\api_token`.  
 
-By default `tag-ninja` looks for a token file named `api_token` in it's own directory. You can always change it by editing the source code, which i strongly recommend.
+By default `tag-ninja` looks for a token file named `api_token` in it's own directory. You can always change it by editing the source code, which I strongly recommend.
 
 ## How to use
 Run the executable and give path to audio track you want to tag as the first and only argument
