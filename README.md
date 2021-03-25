@@ -9,7 +9,7 @@ Takes a splice of the given `.flac` audio track, sends it to AudD audio recognit
 - Album title
 - Artist
 - Track number (album order)
-- Album cover (soon™)
+- Album cover
 
 ## Before you use
 Create an account at [AudD](https://audd.io) and generate an API token. This token will be necessary to make song recognition requests.
@@ -31,3 +31,9 @@ $ ./tag-ninja track01.flac
 - jq (`json` file processing)
 
 All dependencies are available in most major distros repositories.
+
+## Known issues
+Since [AudD](https://audd.io) response `json` does not always have the same structure, some of the time `tag-ninja` is unable to get the album cover. I will be patching this soon.
+
+## Special thanks
+Thanks for [AudD](https://audd.io) for providing me extra free requests for additional testing
