@@ -52,6 +52,7 @@ fi
 AUDIO_SPLICE_FLAC=$(mktemp /tmp/tag-ninja-XXXXXXXX.flac)
 RECOGNIZED_JSON=$(mktemp /tmp/tag-ninja-XXXXXXXX.json)
 FLAC_TAG=$(mktemp /tmp/tag-ninja-XXXXXXXX.tag)
+ALBUM_COVER=$(mktemp /tmp/tag-ninja-XXXXXXXX.jpeg)
 
 # Splicing audio file
 ffmpeg -hide_banner -loglevel panic -y -ss 0 -i $1 -t $SPLICE_DURATION -c copy $AUDIO_SPLICE_FLAC
@@ -65,6 +66,10 @@ TAG_ALBUM=$(jq ".result.album" $RECOGNIZED_JSON)
 TAG_SONGTITLE=$(jq ".result.title" $RECOGNIZED_JSON)
 TAG_RELEASEDATE=$(jq ".result.release_date" $RECOGNIZED_JSON)
 TAG_TRACK_NUMBER=$(jq ".result.spotify.track_number" $RECOGNIZED_JSON)
+ALBUM_COVER_URL=$(jq -r ".result.spotify.album.images[0].url" $RECOGNIZED_JSON)
+
+# Downloading album cover
+curl $ALBUM_COVER_URL > $ALBUM_COVER
 
 # Building flac tag
 echo -e "TRACKNUMBER=$TAG_TRACK_NUMBER\nTITLE=$TAG_SONGTITLE\nARTIST=$TAG_ARTIST\nALBUM=$TAG_ALBUM\nDATE=$TAG_RELEASEDATE" > $FLAC_TAG
@@ -75,6 +80,9 @@ sed -i 's/\"//g' $FLAC_TAG
 # Adding tag to .flac file
 metaflac --remove-all-tags $1
 metaflac --import-tags-from=$FLAC_TAG $1
+
+# Adding image to .flac file
+metaflac --import-picture-from="|image/jpeg|||$ALBUM_COVER" $1
 
 rm -f /tmp/tag-ninja* 
 exit 0
