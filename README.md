@@ -36,4 +36,4 @@ All dependencies are available in most major distros repositories.
 Since [AudD](https://audd.io) response `json` does not always have the same structure, some of the time `tag-ninja` is unable to get the album cover. I will be patching this soon.
 
 ## Special thanks
-Thanks for [AudD](https://audd.io) for providing me extra free requests for additional testing
+Thanks for [AudD](https://audd.io) for providing me free extra requests for additional testing.
